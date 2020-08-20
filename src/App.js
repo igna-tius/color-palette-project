@@ -12,18 +12,26 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props);
-    this.state={
-      palettes:seedColor
-    }
+    const savedPalettes = JSON.parse(window.localStorage.getItem("palettes"));
+    this.state = { palettes: savedPalettes || seedColor };
     this.findPalette=this.findPalette.bind(this);
     this.savePalette=this.savePalette.bind(this);
   }
 
   savePalette(newPalette){
-    this.setState({
-      palettes:[...this.state.palettes,newPalette]
-    })
+    this.setState(
+      { palettes: [...this.state.palettes, newPalette] },
+      this.syncLocalStorage
+    );
   }
+
+  syncLocalStorage() {
+    //save palettes to local storage
+    window.localStorage.setItem(
+      "palettes",
+      JSON.stringify(this.state.palettes)
+  );
+    }
 
   findPalette(id){
     return this.state.palettes.find(function(palette){
@@ -32,7 +40,8 @@ class App extends Component {
   }
   render() { 
     const {palettes}=this.state;
-    return (  
+    return (
+      <div className="App">  
     <Switch>
           <Route exact path='/' render={(routeProps)=><PaletteList palettes={palettes} {...routeProps}/>}/>
           <Route exact path='/palette/new' render={
@@ -62,6 +71,7 @@ class App extends Component {
           />
                                               
     </Switch>
+    </div>
     );
 }
 }
