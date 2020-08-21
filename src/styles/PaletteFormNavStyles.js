@@ -1,7 +1,13 @@
-const drawerWidth = 400;
+import { DRAWER_WIDTH } from "../constants";
+import sizes from "./sizes";
+
+const drawerWidth = DRAWER_WIDTH;
 const styles = theme => ({
   root: {
     display: "flex"
+  },
+  hide: {
+    display: "none"
   },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
@@ -11,7 +17,7 @@ const styles = theme => ({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    height: "56px"
+    height: "64px"
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -21,23 +27,25 @@ const styles = theme => ({
       duration: theme.transitions.duration.enteringScreen
     })
   },
-  hide: {
-    display: "none"
-  },
   menuButton: {
     marginLeft: 12,
     marginRight: 20
   },
   navBtns: {
-    width:"320px",
     marginRight: "1rem",
     "& a": {
       textDecoration: "none"
+    },
+    [sizes.down("xs")]: {
+      marginRight: "0.5rem"
     }
   },
   button: {
-      width:"60px",
-    margin: "0 0.5rem"
+    margin: "0 0.5rem",
+    [sizes.down("xs")]: {
+      margin: "0 0.2rem",
+      padding: "0.3rem"
+    }
   }
 });
 

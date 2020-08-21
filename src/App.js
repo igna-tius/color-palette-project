@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Palette from "./Palette";
-import seedColor from "./seedColor.js";
+import seedColor from "./seedColors.js";
 import PaletteList from "./PaletteList";
 import SingleColorPalette from "./SingleColorPalette";
 import NewPaletteForm from "./NewPaletteForm";
@@ -16,11 +16,19 @@ class App extends Component {
     this.state = { palettes: savedPalettes || seedColor };
     this.findPalette=this.findPalette.bind(this);
     this.savePalette=this.savePalette.bind(this);
+    this.deletePalette = this.deletePalette.bind(this);
   }
 
   savePalette(newPalette){
     this.setState(
       { palettes: [...this.state.palettes, newPalette] },
+      this.syncLocalStorage
+    );
+  }
+
+  deletePalette(id) {
+    this.setState(
+      st => ({ palettes: st.palettes.filter(palette => palette.id !== id) }),
       this.syncLocalStorage
     );
   }
@@ -43,7 +51,11 @@ class App extends Component {
     return (
       <div className="App">  
     <Switch>
-          <Route exact path='/' render={(routeProps)=><PaletteList palettes={palettes} {...routeProps}/>}/>
+          <Route exact path='/' render={(routeProps)=><PaletteList 
+                                                                  palettes={palettes} 
+                                                                  {...routeProps}
+                                                                  deletePalette={this.deletePalette}
+                                                      />} />
           <Route exact path='/palette/new' render={
                                                   (routeProps)=>
                                                   <NewPaletteForm savePalette={this.savePalette} 
