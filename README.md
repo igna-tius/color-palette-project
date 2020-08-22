@@ -3,6 +3,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 A clone of websites like Flat UI Colors and Material UI Colors.
 
 ![GitHub Logo](https://camo.githubusercontent.com/2d90625337e17fc03b9a8d2f607c1fb2877fb69a/68747470733a2f2f692e696d6775722e636f6d2f397831463941742e706e67)
+![GitHub Logo](https://camo.githubusercontent.com/8e2df005932e4fe728b56d7ba11bd09a1dee659b/68747470733a2f2f692e696d6775722e636f6d2f474d30657448412e706e67)
+![GitHub Logo](https://camo.githubusercontent.com/91c49c7ed0ce662b55d2b520cbf83ee50df70747/68747470733a2f2f692e696d6775722e636f6d2f5142327a527a662e706e67)
+
 
 ## Available Scripts
 
