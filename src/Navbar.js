@@ -31,7 +31,7 @@ class Navbar extends Component {
       }
     render() {
         
-        const {format}=this.state;
+        const {format,open}=this.state;
         const {level,changeLevel,showingAllColors,classes}=this.props;
  
         return (
@@ -62,7 +62,7 @@ class Navbar extends Component {
                 </div>
                 <Snackbar
                     anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-                    open={this.state.open}
+                    open={open}
                     autoHideDuration={3000}
                     message={
                         <span id='message-id'>
